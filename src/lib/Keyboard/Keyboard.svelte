@@ -13,21 +13,18 @@
 
   alphabet = ALPHABET[language];
 
-  if (alphabet.special.length) {
-    alphabetRows.push(alphabet.special.split(""));
-  }
-
   alphabetRows.push(alphabet.base.substring(0, 10).split(""));
   alphabetRows.push(alphabet.base.substring(10, 19).split(""));
   alphabetRows.push(alphabet.base.substring(19, 26).split(""));
 
-  function getRowIndentationClass(rowIndex: number): string {
-    const rows = alphabetRows.length;
-    const rowIndexFromEnd = rows - rowIndex - 1;
+  if (alphabet.special.length) {
+    alphabetRows.push(alphabet.special.split(""));
+  }
 
-    if (rowIndexFromEnd === 0) {
+  function getRowIndentationClass(rowIndex: number): string {
+    if (rowIndex === 2) {
       return "ml-4";
-    } else if (rowIndexFromEnd === 1) {
+    } else if (rowIndex === 1) {
       return "ml-2";
     } else {
       return "";
