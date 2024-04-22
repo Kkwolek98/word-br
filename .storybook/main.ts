@@ -7,6 +7,7 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
+    "@storybook/addon-svelte-csf",
   ],
   framework: {
     name: "@storybook/svelte-vite",
