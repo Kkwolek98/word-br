@@ -1,8 +1,11 @@
 <script lang="ts">
+  import { createEventDispatcher } from "svelte";
   import type { LetterState } from "../types/letterState";
 
   export let key: string;
   export let keyState: LetterState;
+
+  const dispatch = createEventDispatcher();
 
   function getKeyColor(): string {
     switch (keyState) {
@@ -24,9 +27,14 @@
       return "";
     }
   }
+
+  function handleClick() {
+    dispatch("keyClick", key);
+  }
 </script>
 
 <button
+  on:click={handleClick}
   class={`${getKeyColor()} w-9 h-12 text-white font-bold rounded-lg shadow-md ${getTextDisabledStyles()}`}
   disabled={keyState === "doesntOccur"}>
   {key}
